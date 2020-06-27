@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import { auth } from 'firebase'
 import 'firebase/database';
 
 const config = {
@@ -14,6 +15,7 @@ const config = {
 firebase.initializeApp(config);
 
 const db = firebase.database();
+const googleAuth = new auth.GoogleAuthProvider();
 
 const createFilterNames = () => {
     const filter_names = {
@@ -31,7 +33,34 @@ const createFilterNames = () => {
     }
     db.ref(`db/filter_names`).set(filter_names);
 }
+
+const turnCollectionToArray = () => {
+
+            // METHODS 
+            // .limitToFirst(10)
+            // .limitToLast(10)
+            // .orderByChild('date').limitToLast(10)
+            // .orderByChild('name').equalTo('John')
+    db.ref('db/events').once('value')
+    .then(snapshot => {
+        const events = [];
+
+        snapshot.forEach((child) => {
+            events.push({
+                id: child.key,
+                ...child.val()
+            })
+        })
+        console.log(events);
+    })
+}
                 // TO CREATE NEW SET OF FILTER NAMES:
                 // createFilterNames();
 
-export {db, createFilterNames }; 
+export {
+    firebase,
+    db,
+    googleAuth,
+    createFilterNames,
+    turnCollectionToArray
+};
