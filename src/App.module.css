@@ -1,21 +1,19 @@
 .App {
-  /* text-align: center; */
-  margin-left: 20px;
+  /* box-sizing: border-box;
+  margin: 0px 20px; */
   font-family: 'Lato', 'Roboto', Arial, Helvetica, sans-serif;
 }
-.row {
+/* .row {
   display: flex;
   width: 100%;
 }
 .colLg3 {
   width: 25%;
-  /* display: inline-block; */
 }
 .colLg9 {
   width: 75%;
-  /* display: inline-block; */
-}
-.form {
+} */
+/* .form {
   box-sizing: border-box;
   color: #333;
   text-align: left;
@@ -40,10 +38,15 @@
   width: 180px;
 }
 .form input[type="submit"] {
-  margin: 10px 0px 0px 65px;
-  width: 120px;
+  margin: 10px 0px 0px 5px;
+  width: 180px;
   background-color: rgb(77, 160, 255);
   color: #fff;
   padding: 6px;
   border-radius: 4px;
 }
+.form .textArea {
+  width: 180px;
+  height: 50px;
+  margin-left: -5px;
+} */
