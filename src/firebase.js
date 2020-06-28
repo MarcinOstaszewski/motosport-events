@@ -14,24 +14,25 @@ const config = {
 
 firebase.initializeApp(config);
 
-const db = firebase.database();
+const fbDB = firebase.database();
 const googleAuth = new auth.GoogleAuthProvider();
 
 const createFilterNames = () => {
     const filter_names = {
-        event_name: {full_name: 'Nazwa wydarzenia',type:'text'},
+        event_name: {full_name: 'Nazwa wydarzenia',type:'text',required:'true'},
+        type_of_event: {full_name: 'Typ wydarzenia',type:'select'},
         category: {full_name: 'Kategoria',type:'text'},
         series_name: {full_name: 'Nazwa serii',type:'text'},
-        voivodship: {full_name: 'Województwo',type:'text'},
+        voivodship: {full_name: 'Województwo',type:'select',required:'true'},
         city: {full_name: 'Miejscowość',type:'text'},
-        locale_name: {full_name: 'Nazwa lokalizacji',type:'text'},
-        date: {full_name: 'Data wydarzenia',type:'text'},
+        locale_name: {full_name: 'Nazwa lokalizacji',type:'text',required:'true'},
+        date: {full_name: 'Data wydarzenia',type:'text',required:'true'},
         licence_needed: {full_name: 'Licencja obowiązkowa',type:'checkbox'},
         homologation_needed: {full_name: 'Homologacja obowiązkowa',type:'checkbox'},
         details: {full_name: 'Szczegóły',type:'text'},
-        link: {full_name: 'Link',type:'text'},
+        link: {full_name: 'Link',type:'text',required:'true'},
     }
-    db.ref(`db/filter_names`).set(filter_names);
+    fbDB.ref(`db/filter_names`).set(filter_names);
 }
 
 const turnCollectionToArray = () => {
@@ -41,7 +42,7 @@ const turnCollectionToArray = () => {
             // .limitToLast(10)
             // .orderByChild('date').limitToLast(10)
             // .orderByChild('name').equalTo('John')
-    db.ref('db/events').once('value')
+    fbDB.ref('db/events').once('value')
     .then(snapshot => {
         const events = [];
 
@@ -51,15 +52,12 @@ const turnCollectionToArray = () => {
                 ...child.val()
             })
         })
-        console.log(events);
     })
 }
-                // TO CREATE NEW SET OF FILTER NAMES:
-                // createFilterNames();
 
 export {
     firebase,
-    db,
+    fbDB,
     googleAuth,
     createFilterNames,
     turnCollectionToArray
