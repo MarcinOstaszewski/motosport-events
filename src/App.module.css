@@ -1,23 +1,13 @@
 .App {
-  /* box-sizing: border-box;
-  margin: 0px 20px; */
   font-family: 'Lato', 'Roboto', Arial, Helvetica, sans-serif;
 }
-/* .row {
-  display: flex;
-  width: 100%;
+.navbarTop {
+  height: 50px;
+  color: white;
+  background-color: rgb(25, 62, 228);
 }
-.colLg3 {
-  width: 25%;
-}
-.colLg9 {
-  width: 75%;
-} */
-/* .form {
-  box-sizing: border-box;
-  color: #333;
-  text-align: left;
-}
+
+/*
 .form label {
   display: block;
   font-size: 12px;
