@@ -1,0 +1,14 @@
+.form input[type="submit"] {
+    margin: 10px 0px 0px 5px;
+    /* width: 180px; */
+    background-color: rgb(77, 160, 255);
+    color: #fff;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.form .textArea {
+    /* width: 180px; */
+    height: 50px;
+    margin-left: -5px;
+}
